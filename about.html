@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[Description spécifique de la page]">
+    <meta name="keywords" content="produits thérapeutiques, bien-être, santé naturelle, [mots-clés spécifiques]">
+    <meta name="author" content="Votre Nom">
+    <title>[Titre de la page] - ThéraNature</title>
+    <meta property="og:title" content="[Titre de la page] - ThéraNature">
+    <meta property="og:description" content="[Description spécifique de la page]">
+    <meta property="og:image" content="https://votre-site.com/images/og-image.jpg">
+    <meta property="og:url" content="https://votre-site.com/[nom-page].html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles améliorés pour ThéraNature - Site de produits thérapeutiques naturels */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4d7c0f;      /* Vert foncé naturel */
+    --secondary-color: #65a30d;     /* Vert moyen */
+    --accent-color: #bef264;        /* Vert lime clair */
+    --dark-color: #1e3a1e;          /* Vert très foncé */
+    --light-color: #f0fdf4;         /* Vert très pâle, presque blanc */
+    --text-color: #374151;          /* Gris sombre */
+    --text-light: #d1fae5;          /* Texte clair sur fond foncé */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 12px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+header.scrolled {
+    background: var(--dark-color);
+    padding: 8px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.logo::before {
+    content: '🌿';
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 8px 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- DROPDOWN MENU --- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--dark-color);
+    border-radius: 8px;
+    padding: 10px 0;
+    list-style: none;
+    min-width: 220px;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    transition: var(--transition);
+}
+
+.dropdown-menu li a:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* --- HERO SECTION --- */
+#hero {
+    background: url('https://source.unsplash.com/random/1600x900/?herbs,nature') no-repeat center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(30, 58, 30, 0.7), rgba(30, 58, 30, 0.5));
+}
+
+#hero .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+#hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.btn {
+    background: var(--accent-color);
+    color: var(--dark-color);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* --- SECTIONS COMMUNES --- */
+#products, #advantages, #reviews, #about {
+    padding: 100px 0;
+}
+
+#advantages, #about {
+    background-color: white;
+}
+
+#products, #reviews {
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIj48cGF0aCBkPSJNNTkuODggNTkuODhIMC4xMlYwLjEyaDU5Ljc2eiIgc3Ryb2tlPSIjZWZlZmVmIiBzdHJva2Utd2lkdGg9IjAuMjQiLz48cGF0aCBmaWxsPSIjZTdmNWRjIiBkPSJNMTcgMjBhMyAzIDAgMSAwIDAgNiAzIDMgMCAwIDAgMC02em0yNiAyNGEzIDMgMCAxIDAgMCA2IDMgMyAwIDAgMCAwLTZ6bS0yLTE1YTIgMiAwIDEgMCAwIDQgMiAyIDAgMCAwIDAtNHoiLz48L2c+PC9zdmc+') var(--light-color);
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 80px;
+    height: 3px;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+}
+
+section p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* --- ADVANTAGES SECTION --- */
+.advantages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.advantage-item {
+    flex: 1;
+    min-width: 250px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.advantage-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--secondary-color);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.advantage-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.advantage-item:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.advantage-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+    position: relative;
+    display: inline-block;
+}
+
+.advantage-item h3::before {
+    content: '•';
+    color: var(--secondary-color);
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.advantage-item p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* --- PRODUCTS SECTION --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(77, 124, 15, 0.1), transparent);
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-card:hover::after {
+    height: 100%;
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+    color: var(--dark-color);
+    padding: 0 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.product-card .btn {
+    display: block;
+    margin: 0 20px 20px;
+    text-align: center;
+}
+
+/* --- REVIEWS SECTION --- */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.review-card::before {
+    content: '"';
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 4rem;
+    color: var(--accent-color);
+    font-family: Georgia, serif;
+    line-height: 1;
+    opacity: 0.3;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.review-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+}
+
+.review-card h3::after {
+    content: '★★★★★';
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+}
+
+.review-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+/* --- ABOUT SECTION --- */
+#about {
+    position: relative;
+    overflow: hidden;
+}
+
+#about::before {
+    content: '🌿';
+    position: absolute;
+    top: 40px;
+    left: 10%;
+    font-size: 5rem;
+    opacity: 0.1;
+    transform: rotate(-20deg);
+}
+
+#about::after {
+    content: '🌱';
+    position: absolute;
+    bottom: 40px;
+    right: 10%;
+    font-size: 5rem;
+    opacity: 0.1;
+    transform: rotate(20deg);
+}
+
+/* --- FOOTER --- */
+footer {
+    background: var(--dark-color);
+    color: var(--text-light);
+    text-align: left;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-main {
+    padding: 70px 0 50px;
+    position: relative;
+}
+
+.footer-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIj48cGF0aCBkPSJNNTkuODggNTkuODhIMC4xMlYwLjEyaDU5Ljc2eiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjAuMjQiLz48cGF0aCBmaWxsPSIjMjgzQzJBIiBkPSJNMTcgMjBhMyAzIDAgMSAwIDAgNiAzIDMgMCAwIDAgMC02em0yNiAyNGEzIDMgMCAxIDAgMCA2IDMgMyAwIDAgMCAwLTZ6bS0yLTE1YTIgMiAwIDEgMCAwIDQgMiAyIDAgMCAwIDAtNHoiLz48L2c+PC9zdmc+');
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    color: var(--accent-color);
+}
+
+.footer-column h3:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    padding-left: 0;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.about-column p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+.contact-info {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.contact-info strong {
+    color: var(--accent-color);
+    margin-right: 8px;
+    display: inline-block;
+    min-width: 70px;
+}
+
+.newsletter-form {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+.newsletter-form input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: var(--transition);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-newsletter {
+    background: var(--secondary-color);
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-newsletter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.btn-newsletter:hover {
+    color: var(--dark-color);
+}
+
+.btn-newsletter:hover::after {
+    left: 0;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- SCROLL TO TOP BUTTON --- */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--secondary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    #hero h1 { font-size: 2.5rem; }
+    #hero p { font-size: 1.1rem; }
+    
+    nav ul {
+        flex-direction: column;
+        background: var(--dark-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        display: none;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav ul.active { 
+        display: flex; 
+        animation: slideDown 0.3s ease forwards;
+    }
+    
+    nav ul li { 
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    nav ul li a {
+        padding: 15px 20px;
+        display: block;
+    }
+    
+    .menu-toggle { 
+        display: block; 
+        font-size: 1.5rem; 
+        cursor: pointer; 
+    }
+    
+    .dropdown-menu {
+        position: static;
+        background: rgba(0, 0, 0, 0.15);
+        box-shadow: none;
+        min-width: 100%;
+        transform: none;
+        padding: 0;
+        border-radius: 0;
+    }
+    
+    .dropdown-menu li a {
+        padding-left: 40px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .advantages-list, .product-grid, .review-grid {
+        gap: 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .contact-column, .about-column {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero h1 { font-size: 2rem; }
+    section h2 { font-size: 2rem; }
+    
+    .product-grid, .review-grid, .advantages-list { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-column {
+        grid-column: span 1;
+    }
+    
+    .scroll-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation de pulse pour les éléments d'accentuation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Animation subtile pour les icônes des avantages */
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Animation pour le bouton de la newsletter */
+@keyframes glowButton {
+    0% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
+    50% { box-shadow: 0 0 10px rgba(190, 242, 100, 0.5); }
+    100% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
+}
+
+/* Animation pour l'apparition des sections */
+@keyframes fadeInSection {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px);
+        filter: blur(5px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Animation pour les images des produits */
+@keyframes zoomIn {
+    from { transform: scale(1.2); }
+    to { transform: scale(1); }
+}
+
+/* Animation pour l'icône de défilement */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Ajout de classes pour utiliser les animations */
+.pulse-animation {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.float-icon {
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+.glow-button:hover {
+    animation: glowButton 1.5s ease-in-out infinite;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zoom-image {
+    overflow: hidden;
+}
+
+.zoom-image img {
+    animation: zoomIn 1s ease-out forwards;
+}
+
+.bounce-icon {
+    animation: bounce 2s infinite;
+}
+main {
+    padding-top: 120px; /* Pour compenser la hauteur du header fixe */
+    padding-bottom: 60px;
+    min-height: 50vh; /* Pour garantir une hauteur minimale */
+}
+
+main h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+main h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+main p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    text-align: left;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ThéraNature</div>
+                <div class="menu-toggle">☰</div>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#products">Produits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#products">Tous les Produits</a></li>
+                            <li><a href="automotive.html">Accessoires Auto</a></li>
+                            <li><a href="appliances.html">Appareils Bien-être</a></li>
+                            <li><a href="electronics.html">Gadgets Bien-être</a></li>
+                            <li><a href="tools.html">Outils Thérapeutiques</a></li>
+                            <li><a href="accessories.html">Accessoires</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <h1>À propos de ThéraNature</h1>
+            <p>ThéraNature est né d'une passion pour la santé naturelle et le bien-être. Depuis notre création, nous nous engageons à fournir des produits thérapeutiques de haute qualité, fabriqués à partir d'ingrédients biologiques et durables.</p>
+            <p>Notre mission est simple : aider nos clients à vivre une vie plus saine et équilibrée grâce à la puissance de la nature. Chaque produit est conçu avec soin, en collaboration avec des experts en naturopathie, pour garantir des résultats optimaux.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column about-column">
+                        <h3>ThéraNature</h3>
+                        <p>Nous proposons des produits thérapeutiques naturels pour améliorer votre bien-être quotidien et vous aider à vivre en harmonie avec la nature.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+                            </a>
+                            <a href="#" class="social-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                            </a>
+                            <a href="#" class="social-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Navigation</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="index.html#products">Produits</a></li>
+                            <li><a href="index.html#advantages">Nos Avantages</a></li>
+                            <li><a href="index.html#reviews">Avis Clients</a></li>
+                            <li><a href="about.html">À propos</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Catégories</h3>
+                        <ul class="footer-links">
+                            <li><a href="index.html#products">Tous les Produits</a></li>
+                            <li><a href="automotive.html">Accessoires Auto</a></li>
+                            <li><a href="appliances.html">Appareils Bien-être</a></li>
+                            <li><a href="electronics.html">Gadgets Bien-être</a></li>
+                            <li><a href="tools.html">Outils Thérapeutiques</a></li>
+                            <li><a href="accessories.html">Accessoires</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Informations</h3>
+                        <ul class="footer-links">
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="returns.html">Retours & Livraison</a></li>
+                            <li><a href="terms.html">Conditions Générales</a></li>
+                            <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column contact-column">
+                        <h3>Contact</h3>
+                        <p class="contact-info"><strong>Email:</strong> contact@theranature.com</p>
+                        <p class="contact-info"><strong>Téléphone:</strong> +33 1 23 45 67 89</p>
+                        <p class="contact-info"><strong>Adresse:</strong> 123 Rue de la Nature, 75000 Paris, France</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Votre email pour la newsletter" required>
+                            <button type="submit" class="btn-newsletter">S'abonner</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 ThéraNature. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top">↑</div>
+
+    <!-- JavaScript -->
+    <script>
+        
+      // Menu toggle pour mobile
+const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('nav ul');
+menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('active');
+});
+
+// Changement de style du header au scroll
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Bouton retour en haut
+const scrollTopBtn = document.querySelector('.scroll-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('active');
+    } else {
+        scrollTopBtn.classList.remove('active');
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Ajouter des classes d'animation aux éléments quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', () => {
+    // Animations pour les éléments qui existent sur cette page
+    document.querySelectorAll('.advantage-item h3').forEach(el => {
+        el.classList.add('float-icon');
+    });
+    
+    document.querySelectorAll('.btn-newsletter').forEach(el => {
+        el.classList.add('glow-button');
+    });
+    
+    document.querySelectorAll('.product-card .btn').forEach(el => {
+        el.classList.add('pulse-animation');
+    });
+    
+    document.querySelector('.scroll-top').classList.add('bounce-icon');
+});
+    </script>
+</body>
+</html>
