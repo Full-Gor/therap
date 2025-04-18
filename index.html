@@ -1011,33 +1011,103 @@ nav {
         grid-column: span 2;
     }
 }
+/* CSS supplémentaire pour le header responsive avec menu complet */
 
+@media (min-width: 769px) {
+    /* Pour les écrans larges, on n'affiche que les 2 premiers liens */
+    nav ul li:nth-child(n+3) {
+        display: none;
+    }
+    
+    /* On montre tous les liens du sous-menu produits */
+    .dropdown-menu li {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        background: var(--dark-color);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 0;
+        display: none;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        max-height: 80vh; /* Limite la hauteur pour éviter que ça dépasse l'écran */
+        overflow-y: auto; /* Permet de scroller si le menu est trop long */
+    }
+    
+    nav ul.active {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+    }
+    
+    /* On montre tous les liens dans le menu mobile */
+    nav ul li {
+        display: block;
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    nav ul li a {
+        padding: 15px 20px;
+        display: block;
+    }
+    
+    /* Style pour le menu déroulant en version mobile */
+    .dropdown-menu {
+        position: static;
+        background: rgba(0, 0, 0, 0.15);
+        box-shadow: none;
+        min-width: 100%;
+        transform: none;
+        padding: 0;
+        border-radius: 0;
+        opacity: 1;
+    }
+    
+    .dropdown-menu li a {
+        padding-left: 40px;
+    }
+}
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">ThéraNature</div>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li class="dropdown">
-                        <a href="index.html#products">Produits</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#products">Tous les Produits</a></li>
-                            <li><a href="automotive.html">Accessoires Auto</a></li>
-                            <li><a href="appliances.html">Appareils Bien-être</a></li>
-                            <li><a href="electronics.html">Gadgets Bien-être</a></li>
-                            <li><a href="tools.html">Outils Thérapeutiques</a></li>
-                            <li><a href="accessories.html">Accessoires</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <button class="menu-toggle">☰</button>
-            </nav>
-        </div>
-    </header>
+    <!-- Header avec menu complet pour responsive -->
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">ThéraNature</div>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="index.html#products">Produits</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html#products">Tous les Produits</a></li>
+                        <li><a href="automotive.html">Accessoires Auto</a></li>
+                        <li><a href="appliances.html">Appareils Bien-être</a></li>
+                        <li><a href="electronics.html">Gadgets Bien-être</a></li>
+                        <li><a href="tools.html">Outils Thérapeutiques</a></li>
+                        <li><a href="accessories.html">Accessoires</a></li>
+                    </ul>
+                </li>
+                <!-- Ajout des autres liens de navigation -->
+                <li><a href="index.html#advantages">Nos Avantages</a></li>
+                <li><a href="index.html#reviews">Avis Clients</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="returns.html">Retours & Livraison</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section id="hero">
