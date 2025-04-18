@@ -16,7 +16,7 @@
     <style>
        /* Styles améliorés pour ThéraNature - Site de produits thérapeutiques naturels */
 
-* {
+       * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -70,6 +70,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -124,6 +125,23 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+/* Menu burger */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background: transparent;
+    border: none;
+    transition: var(--transition);
+    padding: 5px;
+    margin-left: auto;
+}
+
+.menu-toggle:hover {
+    color: var(--accent-color);
+}
+
 /* --- DROPDOWN MENU --- */
 .dropdown {
     position: relative;
@@ -138,7 +156,7 @@ nav ul li a:hover::after {
     border-radius: 8px;
     padding: 10px 0;
     list-style: none;
-    min-width: 220px;
+    min-width: 240px;
     z-index: 1000;
     box-shadow: var(--shadow);
     transform: translateY(10px);
@@ -168,9 +186,14 @@ nav ul li a:hover::after {
     color: white;
 }
 
+/* Mobile-only menu items */
+.mobile-only {
+    display: none;
+}
+
 /* --- HERO SECTION --- */
 #hero {
-    background: url('https://source.unsplash.com/random/1600x900/?herbs,nature') no-repeat center/cover;
+    background: url('/img/aromatherapie-huiles-essentielles.jpg') no-repeat center/cover;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -527,7 +550,7 @@ footer {
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
+    gap: 30px;
     position: relative;
     z-index: 1;
 }
@@ -606,12 +629,17 @@ footer {
     filter: invert(1);
 }
 
+.contact-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .contact-info {
     margin-bottom: 15px;
     font-size: 0.95rem;
     color: var(--text-light);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .contact-info strong {
@@ -734,21 +762,119 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- MEDIA QUERIES --- */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes glowButton {
+    0% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
+    50% { box-shadow: 0 0 10px rgba(190, 242, 100, 0.5); }
+    100% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
+}
+
+@keyframes fadeInSection {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px);
+        filter: blur(5px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(1.2); }
+    to { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Classes d'animation */
+.pulse-animation {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.float-icon {
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+.glow-button:hover {
+    animation: glowButton 1.5s ease-in-out infinite;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zoom-image {
+    overflow: hidden;
+}
+
+.zoom-image img {
+    animation: zoomIn 1s ease-out forwards;
+}
+
+.bounce-icon {
+    animation: bounce 2s infinite;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     #hero h1 { font-size: 2.5rem; }
     #hero p { font-size: 1.1rem; }
+    
+    /* Header et navigation mobile */
+    .menu-toggle {
+        display: block;
+        margin-right: 5px;
+    }
     
     nav ul {
         flex-direction: column;
         background: var(--dark-color);
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
         width: 100%;
         padding: 0;
         display: none;
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        max-height: 80vh;
+        overflow-y: auto;
     }
     
     nav ul.active { 
@@ -766,12 +892,7 @@ footer {
         display: block;
     }
     
-    .menu-toggle { 
-        display: block; 
-        font-size: 1.5rem; 
-        cursor: pointer; 
-    }
-    
+    /* Afficher seulement certains éléments du sous-menu produits en mobile */
     .dropdown-menu {
         position: static;
         background: rgba(0, 0, 0, 0.15);
@@ -780,12 +901,29 @@ footer {
         transform: none;
         padding: 0;
         border-radius: 0;
+        opacity: 1;
+    }
+    
+    .dropdown-menu li {
+        display: none; /* Cacher tous les liens par défaut */
+    }
+    
+    /* N'afficher que "Tous les produits" et "Huiles essentielles" */
+    .dropdown-menu li:nth-child(1),
+    .dropdown-menu li:nth-child(2) {
+        display: block;
     }
     
     .dropdown-menu li a {
         padding-left: 40px;
     }
     
+    /* Afficher les éléments mobile-only */
+    .mobile-only {
+        display: block;
+    }
+    
+    /* Autres ajustements responsives */
     section {
         padding: 60px 0;
     }
@@ -826,252 +964,34 @@ footer {
         right: 20px;
     }
 }
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Animation de pulse pour les éléments d'accentuation */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* Animation subtile pour les icônes des avantages */
-@keyframes floatIcon {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
-}
-
-/* Animation pour le bouton de la newsletter */
-@keyframes glowButton {
-    0% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
-    50% { box-shadow: 0 0 10px rgba(190, 242, 100, 0.5); }
-    100% { box-shadow: 0 0 0 rgba(190, 242, 100, 0); }
-}
-
-/* Animation pour l'apparition des sections */
-@keyframes fadeInSection {
-    from { 
-        opacity: 0; 
-        transform: translateY(30px);
-        filter: blur(5px);
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-/* Animation pour les images des produits */
-@keyframes zoomIn {
-    from { transform: scale(1.2); }
-    to { transform: scale(1); }
-}
-
-/* Animation pour l'icône de défilement */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-
-/* Ajout de classes pour utiliser les animations */
-.pulse-animation {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.float-icon {
-    animation: floatIcon 3s ease-in-out infinite;
-}
-
-.glow-button:hover {
-    animation: glowButton 1.5s ease-in-out infinite;
-}
-
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.zoom-image {
-    overflow: hidden;
-}
-
-.zoom-image img {
-    animation: zoomIn 1s ease-out forwards;
-}
-
-.bounce-icon {
-    animation: bounce 2s infinite;
-}
-/* --- HEADER CORRIGÉ --- */
-header {
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 12px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-toggle {
-    display: none; /* Par défaut caché sur desktop */
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: white;
-    background: transparent;
-    border: none;
-    transition: var(--transition);
-    padding: 5px;
-    margin-left: auto; /* Pour le placer à droite */
-}
-
-.menu-toggle:hover {
-    color: var(--accent-color);
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Afficher sur mobile */
-        margin-right: 5px; /* Ajout d'une marge à droite */
-    }
-    
-    nav {
-        position: relative;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        background: var(--dark-color);
-        position: absolute;
-        top: 100%;
-        right: 0; /* Aligner à droite */
-        width: 100%;
-        padding: 0;
-        display: none;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-    }
-}
-
-/* --- FOOTER CORRIGÉ --- */
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    position: relative;
-    z-index: 1;
-}
-
-.contact-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-info {
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-    color: var(--text-light);
-    display: flex;
-    align-items: flex-start; /* Aligner en haut pour les textes longs */
-}
-
-@media (max-width: 992px) {
-    .footer-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .contact-column, .about-column {
-        grid-column: span 2;
-    }
-}
-/* CSS supplémentaire pour le header responsive avec menu complet */
-
+/* Pour afficher tous les éléments du menu déroulant en mode PC */
 @media (min-width: 769px) {
-    /* Pour les écrans larges, on n'affiche que les 2 premiers liens */
-    nav ul li:nth-child(n+3) {
-        display: none;
+    .dropdown-menu li {
+        display: block; /* Afficher tous les liens du sous-menu */
     }
     
-    /* On montre tous les liens du sous-menu produits */
-    .dropdown-menu li {
-        display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        background: var(--dark-color);
+    /* Maintenir le style du menu déroulant */
+    .dropdown-menu {
+        display: none;
         position: absolute;
         top: 100%;
-        right: 0;
-        width: 100%;
-        padding: 0;
-        display: none;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        left: 0;
+        background: var(--dark-color);
+        border-radius: 8px;
+        padding: 10px 0;
+        list-style: none;
+        min-width: 240px;
         z-index: 1000;
-        max-height: 80vh; /* Limite la hauteur pour éviter que ça dépasse l'écran */
-        overflow-y: auto; /* Permet de scroller si le menu est trop long */
+        box-shadow: var(--shadow);
+        transform: translateY(10px);
+        opacity: 0;
+        transition: var(--transition);
     }
     
-    nav ul.active {
-        display: flex;
-        animation: slideDown 0.3s ease forwards;
-    }
-    
-    /* On montre tous les liens dans le menu mobile */
-    nav ul li {
+    .dropdown:hover .dropdown-menu {
         display: block;
-        margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    nav ul li a {
-        padding: 15px 20px;
-        display: block;
-    }
-    
-    /* Style pour le menu déroulant en version mobile */
-    .dropdown-menu {
-        position: static;
-        background: rgba(0, 0, 0, 0.15);
-        box-shadow: none;
-        min-width: 100%;
-        transform: none;
-        padding: 0;
-        border-radius: 0;
+        transform: translateY(0);
         opacity: 1;
-    }
-    
-    .dropdown-menu li a {
-        padding-left: 40px;
     }
 }
     </style>
@@ -1079,6 +999,7 @@ nav {
 <body>
     <!-- Header -->
     <!-- Header avec menu complet pour responsive -->
+<!-- Header avec menu Produits amélioré pour desktop -->
 <header>
     <div class="container">
         <nav>
@@ -1089,20 +1010,21 @@ nav {
                     <a href="index.html#products">Produits</a>
                     <ul class="dropdown-menu">
                         <li><a href="index.html#products">Tous les Produits</a></li>
-                        <li><a href="automotive.html">Accessoires Auto</a></li>
-                        <li><a href="appliances.html">Appareils Bien-être</a></li>
-                        <li><a href="electronics.html">Gadgets Bien-être</a></li>
-                        <li><a href="tools.html">Outils Thérapeutiques</a></li>
                         <li><a href="accessories.html">Accessoires</a></li>
+                        <li><a href="automotive.html">Appareils Bien-être</a></li>
+                        <li><a href="appliances.html">Gadgets Bien-être</a></li>
+                        <li><a href="electronics.html">Outils Thérapeutiques</a></li>
+                        <li><a href="tools.html">Accessoires</a></li>
+                        
                     </ul>
                 </li>
-                <!-- Ajout des autres liens de navigation -->
-                <li><a href="index.html#advantages">Nos Avantages</a></li>
-                <li><a href="index.html#reviews">Avis Clients</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="returns.html">Retours & Livraison</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <!-- Liens supplémentaires pour le menu mobile -->
+                <li class="mobile-only"><a href="index.html#advantages">Nos Avantages</a></li>
+                <li class="mobile-only"><a href="index.html#reviews">Avis Clients</a></li>
+                <li class="mobile-only"><a href="about.html">À propos</a></li>
+                <li class="mobile-only"><a href="faq.html">FAQ</a></li>
+                <li class="mobile-only"><a href="returns.html">Retours & Livraison</a></li>
+                <li class="mobile-only"><a href="contact.html">Contact</a></li>
             </ul>
             <button class="menu-toggle">☰</button>
         </nav>
