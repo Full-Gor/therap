@@ -1557,7 +1557,48 @@
 
     <!-- Back to Title Button -->
     <div class="back-to-title">↖</div>
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"> 
+        // Initialiser EmailJS avec votre ID utilisateur
+emailjs.init("votre_user_id"); // Remplacez par votre User ID depuis EmailJS
 
+document.getElementById('submit-order').addEventListener('click', () => {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+
+    if (!name || !phone || !email) {
+        alert('Veuillez remplir tous les champs !');
+        return;
+    }
+
+    const orderSummary = cart.map(item => `${item.name} - ${item.quantity} x ${item.price.toFixed(2)} €`).join('\n');
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+    const message = `Nouvelle commande:\n\nNom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\n\nProduits:\n${orderSummary}\n\nTotal: ${total} €`;
+
+    // Envoyer l'email via EmailJS
+    emailjs.send("votre_service_id", "votre_template_id", {
+        to_email: "arnaudbarotteaux@gmail.com",
+        from_name: name,
+        phone: phone,
+        email: email,
+        order_summary: orderSummary,
+        total: total
+    }).then(
+        () => {
+            alert('Commande envoyée avec succès !');
+            cart = [];
+            updateCart();
+            checkoutForm.classList.remove('active');
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+        },
+        (error) => {
+            alert('Erreur lors de l\'envoi de la commande : ' + error.text);
+        }
+    );
+});
+    </script>
     <!-- JavaScript -->
     <script>
         // Menu Toggle
